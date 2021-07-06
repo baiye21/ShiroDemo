@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+ 
+    <!-- 不单独生成一个xxxKey类  defaultModelType="flat" -->
+    <context id="DB2Tables"  targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+ 
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" 
+                        connectionURL="jdbc:mysql://192.168.1.7:3306/demo_db?serverTimezone=UTC"
+                        userId="root"
+                        password="root2020">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--  entity -->
+        <!--  targetProject  The specified target project directory 写绝对路径-->
+        <javaModelGenerator targetPackage="com.demo.entity" targetProject="C:/Users/admin/git/repository/demo/src/main/java">
+           
+            <property name="enableSubPackages" value="false"/>
+            
+            <property name="constructorBased" value="true"/>
+            
+            <property name="trimStrings" value="true"/>
+            
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+ 
+         <!--  mapper.xml-->
+        <sqlMapGenerator targetPackage="mappers" targetProject="C:/Users/admin/git/repository/demo/src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+ 
+        <!-- mapper.java -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.demo.dao" targetProject="C:/Users/admin/git/repository/demo/src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table tableName="m_user"  domainObjectName="UserMaster"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>
